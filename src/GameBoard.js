@@ -1,6 +1,6 @@
 import React from 'react';
 import LetterGrid from './LetterGrid';
-
+import ButtonGrid from './ButtonGrid';
 /*
 function GameBoard(props) {
   return (
@@ -27,7 +27,7 @@ const GameBoard = ({secretWord})=>{
     <div className="App">
 
      <LetterGrid secretWord={secretWord} guessedLetters={['a','e']}/>
-     
+     <ButtonGrid/>
     </div>
   );
 }
