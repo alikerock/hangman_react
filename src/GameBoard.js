@@ -45,7 +45,7 @@ const GameBoard = ({secretWord, maxError})=>{
   return (
     <>
     { errorCount<maxError &&
-      <div className="App">
+      <div className={secretWord ? '':'hidden'}>
       틀린횟수 : {errorCount} / {maxError}
       <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
       <ButtonGrid onclick={clickHandler}/>     
