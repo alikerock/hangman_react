@@ -26,7 +26,7 @@ const GameBoard = ({secretWord})=>{
   return (
     <div className="App">
 
-     <LetterGrid secretWord={secretWord} guessedLetters={['a','e']}/>
+     <LetterGrid secretWord={secretWord} guessedLetters={[]}/>
      <ButtonGrid/>
     </div>
   );
