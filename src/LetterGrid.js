@@ -7,15 +7,17 @@ const LetterGrid = ({secretWord, guessedLetters, answerLength, complete})=>{
 
   //secretWord의 문자열 배열로 변환하고, 그 배열에 각각의 값으로 <span></span>
   const [answer, setAnswer] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
 
   //answer값이 변경되면 answerLength와 비교해서 정답여부 파악
   useEffect(()=>{
-    if(answerLength > 0 && answer ===answerLength ){
+    if(answerLength > 0 && answer === answerLength && !isComplete){
       alert('정답입니다!');
       complete();
+      setIsComplete(true);
     }
-  },[answer, answerLength, complete]);
+  },[answer, answerLength, complete, isComplete]);
 
   //guessedLetters값이 변경되면 answer를 업데이트
   useEffect(()=>{
