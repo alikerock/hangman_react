@@ -7,7 +7,7 @@ function App() {
      <h1>Hangman</h1>
      <p>Do you want to play game</p>
      <div>
-      <GameBoard secretWord="React" />
+      <GameBoard secretWord="React" maxError={8} />
      </div>
     </div>
   );

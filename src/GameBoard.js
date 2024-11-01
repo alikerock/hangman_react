@@ -22,8 +22,9 @@ function GameBoard({secretWord}) {
   );
 }
 */
-const GameBoard = ({secretWord})=>{
+const GameBoard = ({secretWord, maxError})=>{
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const [errorCount, setErrorCount] = useState(0);
 
   let clickHandler = (value)=>{
     let val = value.toLowerCase();
@@ -34,14 +35,23 @@ const GameBoard = ({secretWord})=>{
     */
     setGuessedLetters(prev=>[...prev,val]);
 
+    // 틀리면 errorCount를 1씩 증가시킨다.    
+    if(secretWord.indexOf(val) === -1){
+      setErrorCount(errorCount+1);
+    }
+
   }
 
   return (
-    <div className="App">
-
-     <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
-     <ButtonGrid onclick={clickHandler}/>
-    </div>
+    <>
+    { errorCount<maxError &&
+      <div className="App">
+      틀린횟수 : {errorCount} / {maxError}
+      <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
+      <ButtonGrid onclick={clickHandler}/>     
+      </div>
+    }
+    </>
   );
 }
 
