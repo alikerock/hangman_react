@@ -12,7 +12,7 @@ function App() {
   const [maxError, setMaxError] = useState(0);
   return (
     <div className="App">
-      <h1>Hangman1</h1>
+      <h1>Hangman</h1>
       <p>Do you want to play game</p>
 
       <Routes>
