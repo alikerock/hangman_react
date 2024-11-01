@@ -1,11 +1,10 @@
 import React from 'react';
 
-let SetWord = ({wordSetted})=>{
-
+let SetWord = ()=>{
   return(
     <form onSubmit={(e)=>{
       e.preventDefault();
-      wordSetted(e.target.word.value);
+      window.localStorage.setItem('scretWord', e.target.word.value);
     }}>
       <input type="text" name="word"/>
       <button type="submit">입력</button>

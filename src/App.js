@@ -8,8 +8,13 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [secretWord, setSecretWord] = useState('');
   const [maxError, setMaxError] = useState(0);
+  const [secretWord, setSecretWord] = useState(()=>{
+    let word = window.localStorage.getItem('scretWord');
+    word && word.length > 0 ? setMaxError(word.length + 2):setMaxError(1);
+    return word || ''
+  });
+
   return (
     <div className="App">
       <h1>Hangman</h1>
@@ -17,10 +22,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<GameBoard secretWord={secretWord} maxError={maxError} />} />
-        <Route path="/admin" element={<SetWord wordSetted={(val)=>{
-        setSecretWord(val);
-        setMaxError(val.length + 2);
-      }}/>} />
+        <Route path="/admin" element={<SetWord />} />
       </Routes> 
       
     </div>
