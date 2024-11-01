@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LetterGrid from './LetterGrid';
 import ButtonGrid from './ButtonGrid';
 /*
@@ -23,11 +23,24 @@ function GameBoard({secretWord}) {
 }
 */
 const GameBoard = ({secretWord})=>{
+  const [guessedLetters, setGuessedLetters] = useState([]);
+
+  let clickHandler = (value)=>{
+    let val = value.toLowerCase();
+    /*
+    let gl = [...guessedLetters];
+    gl.push(val);    
+    setGuessedLetters(gl);
+    */
+    setGuessedLetters(prev=>[...prev,val]);
+
+  }
+
   return (
     <div className="App">
 
-     <LetterGrid secretWord={secretWord} guessedLetters={[]}/>
-     <ButtonGrid/>
+     <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
+     <ButtonGrid onclick={clickHandler}/>
     </div>
   );
 }

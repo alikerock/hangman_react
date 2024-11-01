@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Button = ({value})=>{
+const Button = ({value, onclick})=>{
   const [isClicked,setIsClicked] = useState(false);
   let className = '';
 
@@ -8,7 +8,8 @@ const Button = ({value})=>{
     className = 'hidden';
   }
   let clickHandler = ()=>{
-    setIsClicked(true)
+    setIsClicked(true);
+    onclick(value);
   }
 
   return(
