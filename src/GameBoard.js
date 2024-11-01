@@ -44,12 +44,17 @@ const GameBoard = ({secretWord, maxError})=>{
 
   return (
     <>
-    { errorCount<maxError &&
+    { errorCount<maxError ?
       <div className={secretWord ? '':'hidden'}>
-      틀린횟수 : {errorCount} / {maxError}
-      <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
-      <ButtonGrid onclick={clickHandler}/>     
+        틀린횟수 : {errorCount} / {maxError}
+        <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
+        <ButtonGrid onclick={clickHandler}/>     
       </div>
+      :
+      <button className={secretWord ? '':'hidden'} onClick={()=>{
+        setErrorCount(0);
+        setGuessedLetters([]);
+      }}>Retry</button>
     }
     </>
   );
