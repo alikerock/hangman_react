@@ -13,7 +13,7 @@ const ButtonGrid = ()=>{
   ));
   
   return (
-    <div className="App">
+    <div className="buttons">
       {buttons}
     </div>
   );
