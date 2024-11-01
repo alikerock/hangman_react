@@ -41,20 +41,23 @@ const GameBoard = ({secretWord, maxError, answerLength})=>{
     }
 
   }
+  let reset = ()=>{
+    setErrorCount(0);
+    setGuessedLetters([]);
+    let buttons = document.querySelectorAll('.buttons button');
+    buttons.forEach(item=>item.classList.remove('hidden'));
+  }
 
   return (
     <>
     { errorCount<maxError ?
       <div className={secretWord ? '':'hidden'}>
         틀린횟수 : {errorCount} / {maxError}
-        <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters} answerLength={answerLength}/>
+        <LetterGrid secretWord={secretWord} complete={reset} guessedLetters={guessedLetters} answerLength={answerLength}/>
         <ButtonGrid onclick={clickHandler}/>     
       </div>
       :
-      <button className={secretWord ? '':'hidden'} onClick={()=>{
-        setErrorCount(0);
-        setGuessedLetters([]);
-      }}>Retry</button>
+      <button className={secretWord ? '':'hidden'} onClick={reset}>Retry</button>
     }
     </>
   );
