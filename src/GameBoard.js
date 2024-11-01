@@ -22,7 +22,7 @@ function GameBoard({secretWord}) {
   );
 }
 */
-const GameBoard = ({secretWord, maxError})=>{
+const GameBoard = ({secretWord, maxError, answerLength})=>{
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [errorCount, setErrorCount] = useState(0);
 
@@ -47,7 +47,7 @@ const GameBoard = ({secretWord, maxError})=>{
     { errorCount<maxError ?
       <div className={secretWord ? '':'hidden'}>
         틀린횟수 : {errorCount} / {maxError}
-        <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters}/>
+        <LetterGrid secretWord={secretWord} guessedLetters={guessedLetters} answerLength={answerLength}/>
         <ButtonGrid onclick={clickHandler}/>     
       </div>
       :
